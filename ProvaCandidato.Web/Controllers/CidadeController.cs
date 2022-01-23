@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProvaCandidato.Data;
 using ProvaCandidato.Data.Entidade;
+using ProvaCandidato.Helper;
 
 namespace ProvaCandidato.Controllers
 {
@@ -16,20 +17,22 @@ namespace ProvaCandidato.Controllers
         private ContextoPrincipal db = new ContextoPrincipal();
 
 
-        public override ActionResult Criar()
+        public override ActionResult Create()
         {
             ViewBag.CidadeId = db.Cidades.ToList();
 
             return View();
         }
 
-        public override ActionResult Criar(Cidade entidade)
+        public override ActionResult Create(Cidade entidade)
         {
 
             if (ModelState.IsValid)
             {
                 db.Cidades.Add(entidade);
                 db.SaveChanges();
+
+                this.DisplaySuccessMessage("Cidade salvo com sucesso."); ;
                 return RedirectToAction("Index");
             }
 
@@ -38,7 +41,7 @@ namespace ProvaCandidato.Controllers
 
       
 
-        public override ActionResult Editar(int id)
+        public override ActionResult Edit(int id)
         {
 
             if (id == 0)
@@ -53,7 +56,7 @@ namespace ProvaCandidato.Controllers
             return View(cidade);
         }
 
-        public override ActionResult Editar(int id, Cidade entidade)
+        public override ActionResult Edit(int id, Cidade entidade)
         {
             if (ModelState.IsValid)
             {
@@ -76,6 +79,8 @@ namespace ProvaCandidato.Controllers
             if (cidade == null)
 
                 return HttpNotFound();
+
+            this.DisplaySuccessMessage("Cliente excluído com sucesso.");
 
             return View(cidade);
         }

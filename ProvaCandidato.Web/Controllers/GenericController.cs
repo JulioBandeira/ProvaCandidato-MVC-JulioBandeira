@@ -14,16 +14,16 @@ namespace ProvaCandidato.Controllers
         public abstract ActionResult Index();
 
         [HttpGet()]
-        public abstract ActionResult Criar();
+        public abstract ActionResult Create();
 
         [HttpPost()]
-        public abstract ActionResult Criar(T entidade);
+        public abstract ActionResult Create(T entidade);
 
         [HttpGet()]
-        public abstract ActionResult Editar(int id);
+        public abstract ActionResult Edit(int id);
 
         [HttpPost()]
-        public abstract ActionResult Editar(int id, T entidade);
+        public abstract ActionResult Edit(int id, T entidade);
 
         [HttpGet()]
         public abstract ActionResult Excluir(int id);

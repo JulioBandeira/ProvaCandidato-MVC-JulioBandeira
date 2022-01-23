@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProvaCandidato.Data;
 using ProvaCandidato.Data.Entidade;
+using ProvaCandidato.Helper;
 
 namespace ProvaCandidato.Controllers
 {
@@ -38,7 +39,7 @@ namespace ProvaCandidato.Controllers
         }
 
         // GET: Cliente/Create
-        public override ActionResult Criar()
+        public override ActionResult Create()
         {
             ViewBag.CidadeId = new SelectList(db.Cidades, "Codigo", "Nome");
             return View();
@@ -49,7 +50,7 @@ namespace ProvaCandidato.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public override ActionResult Criar([Bind(Include = "Codigo,Nome,DataNascimento,CidadeId,Ativo")] Cliente cliente)
+        public override ActionResult Create([Bind(Include = "Codigo,Nome,DataNascimento,CidadeId,Ativo")] Cliente cliente)
         {  
             if (cliente.DataNascimento > DateTime.Now)
                 ModelState.AddModelError("DataNascimento", "A data de nascimento não pode ser maior que a data atual.");
@@ -58,6 +59,9 @@ namespace ProvaCandidato.Controllers
             {
                 db.Clientes.Add(cliente);
                 db.SaveChanges();
+
+                this.DisplaySuccessMessage("Cliente salvo com sucesso."); 
+
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +70,7 @@ namespace ProvaCandidato.Controllers
         }
 
         // GET: Cliente/Edit/5
-        public override ActionResult Editar(int id)
+        public override ActionResult Edit(int id)
         {
             if (id == 0)
             {
@@ -81,7 +85,7 @@ namespace ProvaCandidato.Controllers
             return View(cliente);
         }
 
-        public override ActionResult Editar(int id, Cliente entidade)
+        public override ActionResult Edit(int id, Cliente entidade)
         {
 
             if (ModelState.IsValid)
@@ -125,6 +129,7 @@ namespace ProvaCandidato.Controllers
             {
                 return HttpNotFound();
             }
+            this.DisplaySuccessMessage("Cliente excluído com sucesso.");
             return View(cliente);
         }
 
