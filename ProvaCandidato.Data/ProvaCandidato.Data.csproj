@@ -56,6 +56,10 @@
     <Compile Include="Migrations\202201231429512_create_bd.Designer.cs">
       <DependentUpon>202201231429512_create_bd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201232104013_date_cliente.cs" />
+    <Compile Include="Migrations\202201232104013_date_cliente.Designer.cs">
+      <DependentUpon>202201232104013_date_cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,6 +73,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202201231429512_create_bd.resx">
       <DependentUpon>202201231429512_create_bd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201232104013_date_cliente.resx">
+      <DependentUpon>202201232104013_date_cliente.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

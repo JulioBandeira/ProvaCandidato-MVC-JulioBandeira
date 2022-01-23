@@ -50,7 +50,10 @@ namespace ProvaCandidato.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public override ActionResult Criar([Bind(Include = "Codigo,Nome,DataNascimento,CidadeId,Ativo")] Cliente cliente)
-        {
+        {  
+            if (cliente.DataNascimento > DateTime.Now)
+                ModelState.AddModelError("DataNascimento", "A data de nascimento não pode ser maior que a data atual.");
+
             if (ModelState.IsValid)
             {
                 db.Clientes.Add(cliente);

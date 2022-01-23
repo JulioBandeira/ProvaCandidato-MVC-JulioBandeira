@@ -19,3 +19,4 @@ C:\Users\Julio Bandeira\Downloads\ProvaCandidato MVC\ProvaCandidato.Data\obj\Deb
 C:\Users\Julio Bandeira\Downloads\ProvaCandidato MVC\ProvaCandidato.Data\obj\Debug\ProvaCandidato.Data.pdb
 C:\Users\Julio Bandeira\Downloads\ProvaCandidato MVC\ProvaCandidato.Data\obj\Debug\ProvaCandidato.Data.Migrations.create_bd.resources
 C:\Users\Julio Bandeira\Downloads\ProvaCandidato MVC\ProvaCandidato.Data\obj\Debug\ProvaCandidato.Data.csproj.GenerateResource.Cache
+C:\Users\Julio Bandeira\Downloads\ProvaCandidato MVC\ProvaCandidato.Data\obj\Debug\ProvaCandidato.Data.Migrations.date_cliente.resources
