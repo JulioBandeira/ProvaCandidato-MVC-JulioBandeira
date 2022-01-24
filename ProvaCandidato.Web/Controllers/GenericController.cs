@@ -11,7 +11,7 @@ namespace ProvaCandidato.Controllers
     public abstract class  GenericBaseController<T> : Controller where T : class
     {
 
-        public abstract ActionResult Index();
+        public abstract ActionResult Index(string txtSearch);
 
         [HttpGet()]
         public abstract ActionResult Create();

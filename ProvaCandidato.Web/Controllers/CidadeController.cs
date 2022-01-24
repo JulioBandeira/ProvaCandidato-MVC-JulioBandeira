@@ -16,6 +16,12 @@ namespace ProvaCandidato.Controllers
     {
         private ContextoPrincipal db = new ContextoPrincipal();
 
+        public override ActionResult Index(string txtSearch)
+        {
+            var cidades = db.Cidades.ToList();
+
+            return View(cidades);
+        }
 
         public override ActionResult Create()
         {
@@ -85,12 +91,7 @@ namespace ProvaCandidato.Controllers
             return View(cidade);
         }
 
-        public override ActionResult Index()
-        {
-            var cidades = db.Cidades.ToList();
-
-            return View(cidades);
-        }
+        
 
         public override ActionResult Visualisar(int id)
         {

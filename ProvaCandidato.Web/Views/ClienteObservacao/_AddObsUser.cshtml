@@ -1,0 +1,26 @@
+﻿@model ProvaCandidato.Data.ViewModel.ViewModelClienteObs
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("AddObsUser", "ClienteObservacao", FormMethod.Post, new { id = "frmObsAddInfo" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.TextBoxFor(x=>x.Codigo_Clilente)
+
+    <div class="form-horizontal">
+        <h4>Observação</h4>
+        <hr />
+       
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Observacao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Observacao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Observacao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+}
+

@@ -10,6 +10,25 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<div class="row">
+    
+@using (Html.BeginForm("Index", "Clientes", FormMethod.Get))
+{
+
+    <div class="col-lg-6">
+        <div class="input-group">
+            <input type="text" name="txtSearch" class="form-control" placeholder="Pesquisar">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Pesquisar</button>
+            </span>
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+}
+</div><!-- /.row -->
+
+<br />
+
 <table class="table">
     <tr>
         <th>
@@ -43,7 +62,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Codigo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Codigo }) |
+            @Html.ActionLink("Details", "Visualisar", new { id=item.Codigo }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Codigo })
         </td>
     </tr>

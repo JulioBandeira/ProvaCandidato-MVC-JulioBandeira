@@ -17,16 +17,20 @@ namespace ProvaCandidato.Controllers
         private ContextoPrincipal db = new ContextoPrincipal();
 
         // GET: Cliente
-        public override ActionResult Index()
+        public override ActionResult Index(string txtSearch)
         {
             var clientes = db.Clientes.Include(c => c.Cidade);
+
+            if (!string.IsNullOrEmpty(txtSearch))
+                clientes = clientes.Where(x => x.Nome.Contains(txtSearch));
+
             return View(clientes.ToList());
         }
 
         // GET: Cliente/Details/5
         public override ActionResult Visualisar(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -51,7 +55,7 @@ namespace ProvaCandidato.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public override ActionResult Create([Bind(Include = "Codigo,Nome,DataNascimento,CidadeId,Ativo")] Cliente cliente)
-        {  
+        {
             if (cliente.DataNascimento > DateTime.Now)
                 ModelState.AddModelError("DataNascimento", "A data de nascimento não pode ser maior que a data atual.");
 
@@ -60,7 +64,7 @@ namespace ProvaCandidato.Controllers
                 db.Clientes.Add(cliente);
                 db.SaveChanges();
 
-                this.DisplaySuccessMessage("Cliente salvo com sucesso."); 
+                this.DisplaySuccessMessage("Cliente salvo com sucesso.");
 
                 return RedirectToAction("Index");
             }
@@ -115,7 +119,7 @@ namespace ProvaCandidato.Controllers
             return View(cliente);
         }
 
-       
+
 
         // GET: Cliente/Delete/5
         public ActionResult Delete(int? id)
@@ -129,15 +133,18 @@ namespace ProvaCandidato.Controllers
             {
                 return HttpNotFound();
             }
-            this.DisplaySuccessMessage("Cliente excluído com sucesso.");
+
             return View(cliente);
         }
 
-        public override ActionResult Excluir(int id)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
             Cliente cliente = db.Clientes.Find(id);
             db.Clientes.Remove(cliente);
             db.SaveChanges();
+            this.DisplaySuccessMessage("Cliente excluído com sucesso.");
             return RedirectToAction("Index");
         }
 
@@ -148,6 +155,11 @@ namespace ProvaCandidato.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public override ActionResult Excluir(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

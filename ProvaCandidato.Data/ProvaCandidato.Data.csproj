@@ -52,6 +52,7 @@
     <Compile Include="ContextoPrincipal.cs" />
     <Compile Include="Entidade\Cidade.cs" />
     <Compile Include="Entidade\Cliente.cs" />
+    <Compile Include="Entidade\ClienteObservacao.cs" />
     <Compile Include="Migrations\202201231429512_create_bd.cs" />
     <Compile Include="Migrations\202201231429512_create_bd.Designer.cs">
       <DependentUpon>202201231429512_create_bd.cs</DependentUpon>
@@ -60,8 +61,13 @@
     <Compile Include="Migrations\202201232104013_date_cliente.Designer.cs">
       <DependentUpon>202201232104013_date_cliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201241248119_add_class_obs.cs" />
+    <Compile Include="Migrations\202201241248119_add_class_obs.Designer.cs">
+      <DependentUpon>202201241248119_add_class_obs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ViewModelClienteObs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -76,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201232104013_date_cliente.resx">
       <DependentUpon>202201232104013_date_cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201241248119_add_class_obs.resx">
+      <DependentUpon>202201241248119_add_class_obs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

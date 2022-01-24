@@ -1,0 +1,64 @@
+﻿@model ProvaCandidato.Data.Entidade.Cliente
+
+@{
+    ViewBag.Title = "Visualisar";
+}
+
+<h2>Visualisar</h2>
+
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <h4 id="h4-obs" style="display:none; color:red">Error ao inserir observação</h4>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ativo)
+        </dd>
+
+    </dl>
+</div>
+
+<button class="AddUser">Adiconar Observação</button>
+<div id="AddUserForm" style="display:none">@{Html.RenderAction("AddObsUser", "ClienteObservacao");}  </div>
+
+<h1>Observações</h1>
+
+@foreach (var item in Model.ListaObservacao)
+{
+    <div class="obs-div">
+        <span>@item.Texto</span>
+    </div>
+}
+
+@section Scripts {
+    <script type="text/javascript" src="~/Assets/Scripts/cliente.js"></script>
+}

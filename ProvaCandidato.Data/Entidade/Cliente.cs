@@ -17,7 +17,6 @@ namespace ProvaCandidato.Data.Entidade
         [StringLength(50, MinimumLength = 3, ErrorMessage = "* O nome deve estar entre de 3 a 50 carecterp´d.")]
         [Required]
         [Column("nome")]
-
         public string Nome { get; set; }
 
         [Column("data_nascimento")]
@@ -36,5 +35,6 @@ namespace ProvaCandidato.Data.Entidade
         [ForeignKey("CidadeId")]
         public virtual Cidade Cidade { get; set; }
 
+        public virtual ICollection<ClienteObservacao> ListaObservacao{ get; set; } 
     }
 }
